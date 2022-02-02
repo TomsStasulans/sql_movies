@@ -31,7 +31,7 @@ const CREATE_MOVIE_RATINGS_TABLE = `CREATE TABLE ${MOVIE_RATINGS} (
   user_id integer NOT NULL,
   movie_id integer NOT NULL,
   rating real NOT NULL,
-  time_created text NOT NULL
+  time_created text NOT NULL,
   PRIMARY KEY (user_id, movie_id)
 )`;
 
@@ -60,17 +60,17 @@ const CREATE_PRODUCTION_COMPANIES_TABLE = `CREATE TABLE ${PRODUCTION_COMPANIES} 
   company_name text NOT NULL
 )`;
 
-const CREATE_INDEX_MOVIES_RELEASE_DATE = ``;
+const CREATE_INDEX_MOVIES_RELEASE_DATE = `create index movies_release_date_idx ON ${MOVIES} (release_date)`;
 
-const CREATE_INDEX_MOVIE_RATINGS_TIME_CREATED = ``;
+const CREATE_INDEX_MOVIE_RATINGS_TIME_CREATED = `create index movie_ratings_time_created_idx ON ${MOVIE_RATINGS} (time_created)`;
 
-const CREATE_UNIQUE_INDEX_MOVIES_IMDB_ID = ``;
+const CREATE_UNIQUE_INDEX_MOVIES_IMDB_ID = `create unique index movies_imdb_id_unq_idx ON ${MOVIES} (imdb_id)`;
 
-const CREATE_UNIQUE_INDEX_KEYWORDS_KEYWORD = ``;
+const CREATE_UNIQUE_INDEX_KEYWORDS_KEYWORD = `create unique index keywords_keyword_unq_idx ON ${KEYWORDS} (keyword)`;
 
-const CREATE_UNIQUE_INDEX_GENRES_GENRE = ``;
+const CREATE_UNIQUE_INDEX_GENRES_GENRE = `create unique index genres_genre_unq_idx ON ${GENRES} (genre)`;
 
-const CREATE_UNIQUE_INDEX_PRODUCTION_COMPANIES_COMPANY_NAME = ``;
+const CREATE_UNIQUE_INDEX_PRODUCTION_COMPANIES_COMPANY_NAME = `create unique index production_companies_company_name_unq_idx ON ${PRODUCTION_COMPANIES} (company_name)`;
 
 describe("Tables", () => {
   let db: Database;
